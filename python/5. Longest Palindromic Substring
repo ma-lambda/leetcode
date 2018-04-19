@@ -5,6 +5,8 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        if len(s) < 2 or s == s[::-1]: # 若字符串长度为1或其与其逆序相同，则直接返回
+            return s
         maxPalS = s[0]
         maxL = 1
         for i in range(1, len(s) - 1):
