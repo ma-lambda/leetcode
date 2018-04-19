@@ -1,0 +1,56 @@
+# my stupid solution
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        rows = []
+        outputS = ''
+        i = 0
+        if numRows == 1:
+            return s
+        while i < len(s):
+            if i % (numRows - 1) == 0:
+                l = [''] * numRows
+                for j in range(numRows):
+                    if i + j < len(s):
+                        l[j] = s[i + j]
+                rows.append(l)
+                i += numRows
+            else:
+                l = [''] * numRows
+                l[numRows - i % (numRows - 1) - 1] = s[i]
+                rows.append(l)
+                i += 1
+        for i in range(numRows):
+            for j in range(len(rows)):
+                outputS += rows[j][i]
+        return outputS
+  
+# a very beautiful solution by @pharrellyhy from LeetCode
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        L = [''] * numRows
+        index, step = 0, 1
+        # step looks like a cursor,walk from the top row to bottom row, 1 or -1 is just direction
+        for x in s:
+            L[index] += x
+            if index == 0:
+                step = 1
+            elif index == numRows -1:
+                step = -1
+            index += step
+
+        return ''.join(L)
+          idx += step
+      return ''.join(rows)
