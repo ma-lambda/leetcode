@@ -29,7 +29,7 @@ class Solution(object):
                 outputS += rows[j][i]
         return outputS
   
-# a very beautiful solution by @pharrellyhy from LeetCode
+# a very beautiful solution by @pharrellyhy from LeetCode, and I just did a little adjustment
 class Solution(object):
     def convert(self, s, numRows):
         """
