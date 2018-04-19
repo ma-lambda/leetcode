@@ -37,20 +37,13 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
-        if numRows == 1 or numRows >= len(s):
+        if numRows < 2 or len(s) < numRows:
             return s
-
-        L = [''] * numRows
-        index, step = 0, 1
-        # step looks like a cursor,walk from the top row to bottom row, 1 or -1 is just direction
-        for x in s:
-            L[index] += x
-            if index == 0:
-                step = 1
-            elif index == numRows -1:
-                step = -1
+        step, index = - 1, 0
+        r = [''] * numRows
+        for ch in s:
+            r[index] += ch
+            if index == 0 or index % (numRows - 1) == 0:
+                step = - step
             index += step
-
-        return ''.join(L)
-          idx += step
-      return ''.join(rows)
+        return ''.join(r)
