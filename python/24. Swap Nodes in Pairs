@@ -1,5 +1,6 @@
 class Solution(object):
     def swapPairs(self, head):
+    if not head or not head.next: return head
         result = cur = ListNode(0)
         num = 1
         while head:
