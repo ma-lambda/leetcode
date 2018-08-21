@@ -1,0 +1,32 @@
+
+```python
+import sys
+n, k = raw_input().strip().split()
+n, k = int(n), int(k)
+score = [int(s) for s in raw_input().strip().split()]
+isawake = [int(a) for a in raw_input().strip().strip().split()]
+score_awake = []
+for i in range(n):
+    score_awake.append(score[i] if isawake[i] else 0)
+score_cumsum = [0] * n
+score_cumsum[-1] = score_awake[-1]
+for i in range(n - 2, -1, -1):
+    score_cumsum[i] = score_cumsum[i + 1] + score_awake[i]
+value = 0
+i = 0
+maxvalue = 0
+while i < n:
+    value += score_awake[i]
+    if not isawake[i]:
+        right = i + k if i + k <= n else n
+        if i + k > n:
+            curvalue = value + sum(score[i:n])
+        else:
+            curvalue = value + sum(score[i:right])
+            if right != n:
+                curvalue += score_cumsum[right]
+        if curvalue > maxvalue:
+            maxvalue = curvalue
+    i += 1
+print maxvalue
+```
